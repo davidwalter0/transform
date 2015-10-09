@@ -1,30 +1,21 @@
-Description
-===================
-yaml2json 
+Initially based on package yaml2json with an MIT license agreement.
 
-Feature
-====================
-* zero config.
-* zero install.
-* support windows,linux,Mac os,freebsd,netbsd,openbsd,plan9 platform
+bronze1man/yaml2json
 
-Usage
-====================
-### shell
-* find the build of you platform
-* run `echo "a: 1" | yaml2json` to see result
+The default makefile is configured to use godeps for vendoring.
 
-### read from file save to file
-```
-cat 1.yml | yaml2json > 2.json
-```
-
-Notice
-=====================
-* if you do not know your mashine is 386 or amd64,you can use 386...
-* master branch may rewrite history to save space.
-* source branch save the history of source code.
-
-Reference
-====================
-https://github.com/peter-edge/go-yaml2json
+make -k get save build test
+GO15VENDOREXPERIMENT=1 GOPATH=/go /go/bin/godep get "gopkg.in/yaml.v2" 
+GO15VENDOREXPERIMENT=1 GOPATH=/go /go/bin/godep save
+GO15VENDOREXPERIMENT=1 GOPATH=/go /go/bin/godep go build -a -ldflags '-s'
+GO15VENDOREXPERIMENT=1 GOPATH=/go /go/bin/godep go test -v
+=== RUN   TestUnhtmlize
+--- PASS: TestUnhtmlize (0.00s)
+=== RUN   TestJson2Yaml
+--- PASS: TestJson2Yaml (0.00s)
+=== RUN   TestYaml2Json
+--- PASS: TestYaml2Json (0.00s)
+=== RUN   TestYaml2JsonIndent
+--- PASS: TestYaml2JsonIndent (0.00s)
+PASS
+ok  	github.com/davidwalter0/transform	0.003s
