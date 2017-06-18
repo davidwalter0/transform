@@ -3,16 +3,16 @@ SHELL=/bin/bash
 libdep="gopkg.in/yaml.v2" 
 
 all: init get save build test
-	@echo make targets init to initialize godeps, get, save, test and build
+	@echo make targets init to initialize govendor, get, save, test and build
 
 init: get save
 
 build: 
-	godep go build -a -ldflags '-s'
+	go build -a -ldflags '-s'
 get:
-	godep get $(libdep)
+	govendor get $(libdep)
 save:
-	godep save
+	govendor sync
 test: 
-	godep go test -v
+	go test -v
 
